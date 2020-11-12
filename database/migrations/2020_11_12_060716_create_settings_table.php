@@ -15,6 +15,11 @@ class CreateSettingsTable extends Migration
     {
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
+
+            $table->foreignId('user_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
+            $table->json('public')->nullable();
+            $table->json('admin')->nullable();
+
             $table->timestamps();
         });
     }
@@ -26,6 +31,10 @@ class CreateSettingsTable extends Migration
      */
     public function down()
     {
+        Schema::table('settings', function (Blueprint $table) {
+            $table->dropForeign(['user_id']);
+        });
+
         Schema::dropIfExists('settings');
     }
 }
