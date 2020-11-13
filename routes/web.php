@@ -84,3 +84,4 @@ Route::group([
 });
 
 Route::post('/push','PushController');
+Route::get('/settings', [\App\Http\Controllers\SettingController::class, 'index']);
