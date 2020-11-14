@@ -5,5 +5,5 @@ test('guests_cant_get_settings', function () {
 
     $this->withExceptionHandling();
 
-    $this->get('/api/settings')->assertForbidden();
+    $this->get('/api/settings', ['Accept' => 'application/json'])->assertStatus(401);
 });
