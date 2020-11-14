@@ -1,0 +1,6 @@
+{
+    "notifications": {
+        "web_pushes": true,
+        "embedded": true
+    }
+}
