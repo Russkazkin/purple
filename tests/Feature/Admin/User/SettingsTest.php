@@ -1,22 +1,9 @@
 <?php
 
-namespace Tests\Feature\Admin\User;
+test('guests_cant_get_settings', function () {
+    /* @var \Tests\TestCase $this */
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Tests\TestCase;
+    $this->withExceptionHandling();
 
-class SettingsTest extends TestCase
-{
-    /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
-    public function testExample()
-    {
-        $response = $this->get('/');
-
-        $response->assertStatus(200);
-    }
-}
+    $this->get('/api/settings')->assertForbidden();
+});
