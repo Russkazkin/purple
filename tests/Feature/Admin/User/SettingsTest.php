@@ -5,5 +5,5 @@ test('guests_cant_get_settings', function () {
 
     $this->withExceptionHandling();
 
-    $this->get('/api/settings', ['Accept' => 'application/json'])->assertStatus(401);
+    $this->get('/api/admin/settings', ['Accept' => 'application/json'])->assertStatus(401);
 });

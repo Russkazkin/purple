@@ -33,6 +33,7 @@ Route::group([
     Route::get('/notifications/unread', [NotificationController::class, 'unread'])->name('notifications.unread');
     Route::get('/notifications/unread-count', [NotificationController::class, 'unreadCount'])->name('notifications.unread_count');
     Route::get('/notifications/all-read', [NotificationController::class, 'markAllAsRead'])->name('notifications.all-read');
+    Route::apiResource('/admin/settings', 'SettingsController')->only('index');
 });
 
 Route::group([
@@ -47,5 +48,4 @@ Route::group([
     Route::get('/auth-user-friends', 'AuthUserFriendsController')->name('auth-user-friends');
     Route::get('/mark-chat-is-read', 'MarkChatIsReadController')->name('mark-chat-is-read');
     Route::apiResource('messages', 'MessageController');
-    Route::apiResource('settings', 'SettingsController')->only('index');
 });
