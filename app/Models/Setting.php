@@ -7,7 +7,6 @@ use Symfony\Component\Yaml\Yaml;
 
 class Setting extends Model
 {
-    private string $default;
     protected $casts = [
         'public' => 'array',
         'admin' => 'array',
@@ -18,5 +17,3 @@ class Setting extends Model
         return Yaml::parseFile(config_path('settings/admin.yaml'));
     }
 }
-
-
