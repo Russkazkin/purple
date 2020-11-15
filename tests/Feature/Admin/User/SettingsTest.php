@@ -34,5 +34,26 @@ test('admins_can_get_default_admin_settings', function () {
 
     $this->actingAs($admin, 'api');
 
-    $this->get('/api/admin/settings')->assertOk();
+    $response = $this->get('/api/admin/settings')->assertOk();
+
+    $response->assertJson([
+        'type' => 'settings',
+        'id' => 'default',
+        'relationships' => [
+            'user' => [
+                'user_id' => $admin->id,
+                'links' => [
+                    'self' => '/user/' . $admin->id,
+                ]
+            ]
+        ],
+        'data' => [
+            'notifications' => [
+                'type' => [
+                    'web_pushes' => 1,
+                    'embedded' => 1,
+                ]
+            ]
+        ],
+    ]);
 });
