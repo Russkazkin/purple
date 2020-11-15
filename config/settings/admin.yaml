@@ -1,0 +1,4 @@
+notifications:
+  type:
+    web_pushes: 1
+    embedded: 1
