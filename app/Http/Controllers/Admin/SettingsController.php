@@ -16,7 +16,7 @@ class SettingsController extends Controller
      */
     public function index()
     {
-        $settings = new Setting();
+        $settings = auth()->user()->settings ?? new Setting;
         return new AdminSettingsResource($settings);
     }
 

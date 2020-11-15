@@ -297,4 +297,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Message::class)->where(['recipient_id' => auth()->user()->id, 'read_at' => null]);
     }
+
+    public function settings()
+    {
+        return $this->hasOne(Setting::class);
+    }
 }
