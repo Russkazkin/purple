@@ -14,6 +14,6 @@ class Setting extends Model
 
     public function getAdminAttribute()
     {
-        return Yaml::parseFile(config_path('settings/admin.yaml'));
+        return $this->admin ?? Yaml::parseFile(config_path('settings/admin.yaml'));
     }
 }
